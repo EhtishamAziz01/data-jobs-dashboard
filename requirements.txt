@@ -1,0 +1,25 @@
+# Data Collection
+beautifulsoup4>=4.12
+requests>=2.31
+selenium>=4.15
+fake-useragent>=1.4
+
+# Data Processing
+pandas>=2.1
+numpy>=1.26
+
+# Database
+duckdb>=0.10
+
+# Visualization (EDA)
+plotly>=5.18
+seaborn>=0.13
+matplotlib>=3.8
+
+# Notebooks
+jupyter>=1.0
+ipykernel>=6.27
+
+# Utilities
+python-dotenv>=1.0
+tqdm>=4.66

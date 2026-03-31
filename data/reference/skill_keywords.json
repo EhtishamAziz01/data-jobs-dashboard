@@ -1,0 +1,12 @@
+{
+  "Programming": ["python", "r programming", "sql", "java", "scala", "bash", "shell", "javascript", "typescript", "c++", "go", "rust", "sas", "matlab", "julia"],
+  "Visualization": ["power bi", "powerbi", "tableau", "looker", "matplotlib", "plotly", "seaborn", "d3.js", "qlik", "grafana", "metabase", "superset"],
+  "Data Engineering": ["airflow", "apache airflow", "dbt", "spark", "pyspark", "kafka", "etl", "elt", "data pipeline", "data warehouse", "data lake", "databricks", "fivetran", "prefect", "dagster", "nifi"],
+  "Cloud": ["aws", "amazon web services", "azure", "gcp", "google cloud", "bigquery", "redshift", "snowflake", "s3", "glue", "lambda", "cloud functions", "cloud run", "emr", "athena", "synapse"],
+  "ML_AI": ["machine learning", "deep learning", "nlp", "natural language processing", "tensorflow", "pytorch", "scikit-learn", "xgboost", "lightgbm", "computer vision", "neural network", "random forest", "regression", "classification", "clustering", "recommendation", "llm", "generative ai", "mlflow", "mlops", "feature engineering"],
+  "Databases": ["postgresql", "postgres", "mysql", "mongodb", "redis", "elasticsearch", "duckdb", "sqlite", "oracle", "sql server", "cassandra", "dynamodb", "neo4j", "cosmos db"],
+  "Tools": ["excel", "git", "github", "docker", "kubernetes", "jira", "confluence", "notion", "slack", "linux", "ci/cd", "github actions", "terraform", "ansible"],
+  "Data_Analysis": ["pandas", "numpy", "scipy", "statsmodels", "statistics", "a/b testing", "hypothesis testing", "eda", "exploratory data analysis", "data cleaning", "data wrangling", "data modeling", "data quality"],
+  "BI_Analytics": ["kpi", "dashboard", "reporting", "business intelligence", "data storytelling", "google analytics", "mixpanel", "amplitude", "segment"],
+  "Soft_Skills": ["communication", "stakeholder management", "problem solving", "critical thinking", "teamwork", "collaboration", "agile", "scrum", "presentation", "cross-functional"]
+}
