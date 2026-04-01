@@ -1,65 +1,108 @@
-# 🇮🇪 Ireland Data Jobs Market Dashboard
+# 🇮🇪 Ireland Jobs & Skills Market Dashboard
 
-An end-to-end data analytics project analyzing job listings to uncover trends, in-demand skills, and salary insights in Ireland's data job market.
+End-to-end data analytics project analyzing **1,930 real LinkedIn job postings** to uncover trends in the data job market — skills demand, salary benchmarks, and career insights.
 
-## 📊 Key Findings
+## Key Findings
 
-> *Coming soon — dashboard and analysis in progress.*
-
-## 🛠️ Tech Stack
-
-| Layer | Tools |
+| Metric | Value |
 |---|---|
-| **Data Collection** | Python, BeautifulSoup, Requests |
-| **Data Processing** | Pandas, NumPy |
-| **Database** | DuckDB |
-| **Visualization** | Power BI, Plotly, Seaborn |
-| **Notebooks** | Jupyter |
+| Jobs Analyzed | 1,930 |
+| Unique Companies | 1,172 |
+| Skills Extracted | 131 |
+| #1 Skill | SQL (30.5%) |
+| Avg Salary — Data Scientist | $160,068 |
+| Avg Salary — Data Analyst | $110,658 |
 
-## 🏗️ Project Structure
+## Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Data Collection | Python, BeautifulSoup, Kaggle API |
+| Data Cleaning | Pandas, Regex, Custom NLP |
+| Database | DuckDB (Star Schema) |
+| Analysis | Jupyter, Plotly, Seaborn |
+| Dashboard | Power BI |
+| Version Control | Git, GitHub |
+
+## Project Structure
 
 ```
-Project1/
-├── data/
-│   ├── raw/                  # Raw scraped/imported data
-│   ├── processed/            # Cleaned, transformed data
-│   └── reference/            # Skill keyword dictionary, lookups
-├── notebooks/                # EDA and analysis notebooks
 ├── src/
-│   ├── scraper/              # Job listing scrapers
-│   ├── cleaning/             # Data cleaning & skill extraction
-│   └── database/             # Schema & data loading
-├── dashboard/                # Power BI files & screenshots
-├── reports/                  # Written analysis report
-└── docs/                     # Data dictionary & documentation
+│   ├── scraper/          # Indeed.ie scraper + Kaggle adapter
+│   ├── cleaning/         # Dedup, standardize, skill extraction
+│   └── database/         # DuckDB schema + loader + PBI export
+├── notebooks/
+│   └── 03_eda_analysis.ipynb   # EDA with 20+ Plotly charts
+├── dashboard/
+│   ├── data/             # Power BI-ready CSVs
+│   └── ireland_jobs_theme.json
+├── data/
+│   └── reference/        # Skill keyword dictionary
+└── reports/
+    └── analysis_report.md
 ```
 
-## 🚀 Setup
+## Data Pipeline
+
+```
+LinkedIn (3.3M postings)
+    ↓ Filter for data roles
+2,000 raw listings
+    ↓ Dedup + clean
+1,930 cleaned jobs
+    ↓ Skill extraction (131 skills)
+8,966 job-skill pairs
+    ↓ Load into DuckDB
+Star Schema (3 tables + 3 views)
+    ↓ Export
+Power BI Dashboard
+```
+
+## Setup & Run
 
 ```bash
-# Clone the repository
-git clone <repo-url>
-cd Project1
-
-# Create and activate virtual environment
-python3 -m venv venv
-source venv/bin/activate
-
-# Install dependencies
+# Clone and install
+git clone https://github.com/EhtishamAziz01/ireland-jobs-dashboard.git
+cd ireland-jobs-dashboard
+python -m venv venv && source venv/bin/activate
 pip install -r requirements.txt
 
-# Run the data pipeline
-python src/scraper/run_scraper.py
-python src/cleaning/run_cleaning.py
-python src/database/load_data.py
+# Run full pipeline
+python -m src.scraper.kaggle_adapter --source linkedin --limit 2000
+python -m src.cleaning.run_cleaning
+python -m src.database.load_data
+
+# Open analysis notebook
+jupyter notebook notebooks/03_eda_analysis.ipynb
 ```
 
-## 📈 Dashboard Preview
+## Database Schema
 
-> *Screenshots coming soon.*
+```sql
+fact_jobs (job_id, job_title, job_category, company, city, salary_avg, ...)
+dim_skills (skill_id, skill_name, skill_category)
+job_skills (job_id, skill_id)  -- bridge table
 
-## 👤 Author
+-- Analytical views
+v_skill_demand    -- skill rankings with % of jobs
+v_salary_by_category  -- avg salary per role type
+v_jobs_by_city    -- geographic distribution
+```
 
-**Ehtisham Aziz** — Junior Data Analyst | Data Scientist
-- [LinkedIn](https://linkedin.com)
-- [GitHub](https://github.com)
+## Analysis Highlights
+
+**Top Skills**: SQL (30.5%) → Excel (30.1%) → Python (23.1%) → Communication (24.3%)
+
+**Salary by Role** (USD):
+- Data Scientist: $160K avg
+- Data Engineer: $152K avg
+- Data Analyst: $111K avg
+
+**Insight**: Upskilling from Data Analyst → Data Engineer yields a ~$42K salary increase on average.
+
+## Author
+
+**Ehtisham Aziz** — B.Sc. Digital Business & Data Science | Le Wagon Data Science Bootcamp
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin)](https://linkedin.com/in/ehtishamaziz)
+[![GitHub](https://img.shields.io/badge/GitHub-100000?style=flat&logo=github)](https://github.com/EhtishamAziz01)
